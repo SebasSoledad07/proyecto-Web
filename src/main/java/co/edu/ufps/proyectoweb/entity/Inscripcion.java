@@ -22,4 +22,5 @@ public class Inscripcion {
     private Curso curso;
 
     private LocalDate fechaInscripcion;
+    private Boolean inscrito;
 }

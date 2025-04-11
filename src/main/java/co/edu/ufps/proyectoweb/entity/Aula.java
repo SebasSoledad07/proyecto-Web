@@ -2,6 +2,8 @@ package co.edu.ufps.proyectoweb.entity;
 import lombok.Data;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Data
 @Entity

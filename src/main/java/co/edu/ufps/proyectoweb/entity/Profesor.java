@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "profesores")
+@DiscriminatorValue( "profesores")
 public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -57,10 +57,5 @@ public class Curso {
     @OneToMany(mappedBy = "curso")
     private List<HistorialAcademico> historialAcademico;
 
-    @OneToMany(mappedBy = "curso")
-    private List<ObjetivoCurso> objetivos;
-
-    @OneToMany(mappedBy = "curso")
-    private List<CalendarioEvento> eventos;
 }
 

@@ -28,9 +28,9 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<AsignacionRol> roles;
 
-    @OneToMany(mappedBy = "emisor")
-    private List<Mensaje> mensajesEnviados;
+    //@OneToMany(mappedBy = "emisor")
+   // private List<Usuario> mensajesEnviados;
 
-    @OneToMany(mappedBy = "receptor")
-    private List<Mensaje> mensajesRecibidos;
+   // @OneToMany(mappedBy = "receptor")
+    //private List<Mensaje> mensajesRecibidos;
 }

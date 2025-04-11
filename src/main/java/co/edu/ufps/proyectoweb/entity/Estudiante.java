@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "estudiantes")
+@DiscriminatorValue( "estudiantes")
 public class Estudiante extends Usuario {
 
     @Id

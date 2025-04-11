@@ -20,4 +20,5 @@ public class HistorialAcademico {
 
     private Double calificacionFinal;
     private Boolean aprobado;
+    private String periodo;
 }
