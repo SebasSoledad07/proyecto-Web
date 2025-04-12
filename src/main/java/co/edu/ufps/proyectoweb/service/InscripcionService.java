@@ -24,6 +24,10 @@ public class InscripcionService {
 
     @Autowired
     private CursoRepository cursoRepository;
+    public InscripcionService(InscripcionRepository inscripcionRepository) {
+        this.inscripcionRepository = inscripcionRepository;
+    }
+
 
     public List<Inscripcion> findAllInscripciones() {
         return inscripcionRepository.findAll();

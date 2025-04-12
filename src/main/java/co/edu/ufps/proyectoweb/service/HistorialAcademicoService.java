@@ -9,6 +9,11 @@ import java.util.Optional;
 public class HistorialAcademicoService {
     private HistorialAcademicoRepository repository;
 
+
+    public HistorialAcademicoService(HistorialAcademicoRepository repository) {
+        this.repository = repository;
+    }
+
     public List<HistorialAcademico> obtenerPorEstudiante(Long estudianteId) {
         return repository.findByEstudianteId(estudianteId);
     }

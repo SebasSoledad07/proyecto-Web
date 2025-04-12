@@ -1,26 +1,28 @@
 package co.edu.ufps.proyectoweb.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
 @Entity
-@DiscriminatorValue( "profesores")
-public class Profesor {
+@DiscriminatorValue("PROFESOR")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class Profesor extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String nombre;
-    private String apellido;
-
-    @Column(unique = true)
-    private String email;
-
-    private String especialidad;
-
+    private String titulo;
+    private String departamento;
     @OneToMany(mappedBy = "profesor")
     private List<Curso> cursos;
+
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL)
+    private List<Evaluacion> evaluaciones;
+
 }

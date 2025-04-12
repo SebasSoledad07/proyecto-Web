@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface EvaluacionRepository extends JpaRepository<Evaluacion, Long> {
-    List<Evaluacion> findByCursoId(Long cursoId);
     List<Evaluacion> findByFechaBetween(LocalDate inicio, LocalDate fin);
 }

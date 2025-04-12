@@ -21,6 +21,10 @@ public class AsistenciaService {
     @Autowired
     private AsistenciaRepository repository;
 
+    public AsistenciaService(AsistenciaRepository repository) {
+        this.repository = repository;
+    }
+
     public Asistencia registarAsistencia(Asistencia asistencia) {
         return repository.save(asistencia);
     }

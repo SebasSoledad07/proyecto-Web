@@ -19,6 +19,9 @@ public class Evaluacion {
     @JoinColumn(name = "curso_id")
     private Curso curso;
 
+    @ManyToOne
+    @JoinColumn(name = "profesor_id")
+    private Profesor profesor;
     private String titulo;
     private String descripcion;
     private LocalDate fecha;

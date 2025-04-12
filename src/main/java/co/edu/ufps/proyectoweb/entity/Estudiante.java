@@ -1,6 +1,6 @@
 package co.edu.ufps.proyectoweb.entity;
 
-import lombok.Data;
+import lombok.*;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -8,22 +8,18 @@ import java.util.List;
 
 @Data
 @Entity
-@DiscriminatorValue( "estudiantes")
+@DiscriminatorValue("ESTUDIANTE")
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class Estudiante extends Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String nombre;
-    private String apellido;
-
-    @Column(unique = true)
-    private String email;
-
-    private LocalDate fechaNacimiento;
-    private String direccion;
-
+    private String codigo;
+    private String programa;
     @OneToMany(mappedBy = "estudiante")
     private List<Inscripcion> inscripciones;
 
