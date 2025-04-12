@@ -17,19 +17,6 @@ public interface AsistenciaRepository extends JpaRepository<Asistencia, Long> {
     List<Asistencia> findByEstudianteId(Long estudianteId);
 
     List<Asistencia> findByCursoIdAndFecha(Long cursoId, LocalDate fecha);
-
-    boolean existsByEstudianteIdAndCursoIdAndFecha(Long estudianteId, Long cursoId, LocalDate fecha);
-
-    @Query("SELECT COUNT(a) FROM Asistencia a WHERE a.estudiante.id = :estudianteId AND a.curso.id = :cursoId AND a.presente = false")
-    Long contarInasistenciasPorEstudianteYCurso(
-            @Param("estudianteId") Long estudianteId,
-            @Param("cursoId") Long cursoId);
-
-    @Query("SELECT (COUNT(a) * 100.0 / (SELECT COUNT(a2) FROM Asistencia a2 WHERE a2.estudiante.id = :estudianteId AND a2.curso.id = :cursoId)) " +
-            "FROM Asistencia a WHERE a.estudiante.id = :estudianteId AND a.curso.id = :cursoId AND a.presente = true")
-    Double calcularPorcentajeAsistencia(
-            @Param("estudianteId") Long estudianteId,
-            @Param("cursoId") Long cursoId);
-
+    public boolean existeHistorial(Long estudianteId, Long cursoId);
 
 }

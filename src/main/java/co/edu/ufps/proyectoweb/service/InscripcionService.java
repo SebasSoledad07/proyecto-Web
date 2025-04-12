@@ -1,5 +1,4 @@
 package co.edu.ufps.proyectoweb.service;
-import co.edu.ufps.proyectoweb.dto.inscripciondto.InscripcionDTO;
 import co.edu.ufps.proyectoweb.entity.Curso;
 import co.edu.ufps.proyectoweb.entity.Estudiante;
 import co.edu.ufps.proyectoweb.entity.Inscripcion;
@@ -65,14 +64,5 @@ public class InscripcionService {
         inscripcionRepository.deleteById(id);
     }
 
-    private InscripcionDTO convertirADTO(Inscripcion inscripcion) {
-        return InscripcionDTO.builder()
-                .id(inscripcion.getId())
-                .fechaInscripcion(inscripcion.getFechaInscripcion().toString())
-                .estudianteId(inscripcion.getEstudiante().getId())
-                .cursoId(inscripcion.getCurso().getId())
-                .inscrito(inscripcion.getInscrito())
-                .build();
-    }
 }
 

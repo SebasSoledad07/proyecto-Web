@@ -9,7 +9,6 @@ import java.util.Optional;
 public class HistorialAcademicoService {
     private HistorialAcademicoRepository repository;
 
-
     public HistorialAcademicoService(HistorialAcademicoRepository repository) {
         this.repository = repository;
     }
@@ -33,5 +32,16 @@ public class HistorialAcademicoService {
     public HistorialAcademico actualizar(HistorialAcademico historial) {
         return repository.save(historial);
     }
-    
+
+    public boolean existeHistorial(Long estudianteId, Long cursoId) {
+        return repository.existsByEstudianteIdAndCursoId(estudianteId, cursoId);
+    }
+    public Double calcularPromedio(Long estudianteId) {
+        return repository.calcularPromedioPorEstudiante(estudianteId);
+    }
+
+    public List<HistorialAcademico> obtenerAprobadosPorEstudiante(Long estudianteId) {
+        return repository.findByEstudianteIdAndAprobadoTrue(estudianteId);
+    }
+
 }
