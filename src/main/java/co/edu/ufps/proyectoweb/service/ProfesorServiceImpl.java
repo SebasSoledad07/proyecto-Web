@@ -11,45 +11,51 @@ import java.util.Optional;
 @Service
 @Transactional
 public class ProfesorServiceImpl implements ProfesorService{
+    @Autowired
+    private ProfesorRepository profesorRepository;
 
-    private final ProfesorRepository profesorRepository;
 
-    public ProfesorServiceImpl(ProfesorRepository profesorRepository) {
-         this.profesorRepository = profesorRepository;
-    }
-
-    @Override
-    public Profesor guardarProfesor(Profesor profesor) {
-        return profesorRepository.save(profesor);
-    }
-
-    @Transactional(readOnly = true)
-    public Optional<Profesor> obtenerProfesorPorId(Long id) {
-        return profesorRepository.findById(id);
-    }
-
-    @Transactional(readOnly = true)
-    public List<Profesor> obtenerTodosLosProfesores() {
+    public List<Profesor> getAllProfesores() {
         return profesorRepository.findAll();
     }
 
-    @Override
-    public Profesor actualizarProfesor(Long id, @org.jetbrains.annotations.NotNull Profesor profesorActualizado) {
-        Profesor profesorExistente = profesorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Profesor no encontrado con ID: " + id));
 
-        profesorExistente.setNombre(profesorActualizado.getNombre());
-        profesorExistente.setApellido(profesorActualizado.getApellido());
-        profesorExistente.setEmail(profesorActualizado.getEmail());
-
-        return profesorRepository.save(profesorExistente);
+    public Profesor getProfesorById(Long id) {
+        return profesorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Profesor no encontrado con id: " + id));
     }
 
-    @Override
-    public void eliminarProfesor(Long id) {
-        if (!profesorRepository.existsById(id)) {
-            throw new RuntimeException("Profesor no encontrado con ID: " + id);
-        }
-        profesorRepository.deleteById(id);
+
+    public Profesor createProfesor(Profesor profesor) {
+        return profesorRepository.save(profesor);
+    }
+
+
+    public Profesor updateProfesor(Long id, Profesor profesorDetails) {
+        Profesor profesor = getProfesorById(id);
+        profesor.setNombre(profesorDetails.getNombre());
+        profesor.setApellido(profesorDetails.getApellido());
+        profesor.setEmail(profesorDetails.getEmail());
+        profesor.setTelefono(profesorDetails.getTelefono());
+        profesor.setEspecialidad(profesorDetails.getEspecialidad());
+        return profesorRepository.save(profesor);
+    }
+
+
+    public void deleteProfesor(Long id) {
+        Profesor profesor = getProfesorById(id);
+        profesorRepository.delete(profesor);
+    }
+
+
+    public Profesor findByCodigo(String codigo) {
+        return profesorRepository.findByCodigo(codigo)
+                .orElseThrow(() -> new RuntimeException("Profesor no encontrado con código: " + codigo));
+    }
+
+
+    public Profesor findByEmail(String email) {
+        return profesorRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Profesor no encontrado con email: " + email));
     }
 }

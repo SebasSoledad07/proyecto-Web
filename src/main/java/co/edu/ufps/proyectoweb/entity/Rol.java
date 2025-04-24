@@ -1,7 +1,7 @@
 package co.edu.ufps.proyectoweb.entity;
 import lombok.Data;
 import jakarta.persistence.*;
-import java.time.LocalDate;
+
 import java.util.List;
 
 @Data

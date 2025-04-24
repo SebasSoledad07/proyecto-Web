@@ -2,8 +2,6 @@ package co.edu.ufps.proyectoweb.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @Entity
 @Table(name = "recursos_multimedia")

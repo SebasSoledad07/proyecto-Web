@@ -1,7 +1,6 @@
 package co.edu.ufps.proyectoweb.controller;
 import co.edu.ufps.proyectoweb.entity.HistorialAcademico;
 import co.edu.ufps.proyectoweb.service.HistorialAcademicoService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

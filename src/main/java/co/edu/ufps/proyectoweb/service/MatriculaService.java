@@ -1,10 +1,12 @@
 package co.edu.ufps.proyectoweb.service;
 import co.edu.ufps.proyectoweb.entity.Matricula;
 import co.edu.ufps.proyectoweb.repository.MatriculaRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MatriculaService {
     private MatriculaRepository matriculaRepository;
 

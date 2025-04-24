@@ -2,7 +2,6 @@ package co.edu.ufps.proyectoweb.controller;
 
 import co.edu.ufps.proyectoweb.entity.Matricula;
 import co.edu.ufps.proyectoweb.service.MatriculaService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

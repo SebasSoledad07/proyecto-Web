@@ -2,10 +2,12 @@ package co.edu.ufps.proyectoweb.service;
 
 import co.edu.ufps.proyectoweb.entity.HistorialAcademico;
 import co.edu.ufps.proyectoweb.repository.HistorialAcademicoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class HistorialAcademicoService {
     private HistorialAcademicoRepository repository;
 

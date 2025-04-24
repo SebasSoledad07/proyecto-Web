@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/api/estudiantes")
+@RequestMapping("/api/estudiantes")
 @RequiredArgsConstructor
 public class EstudianteController {
 
@@ -16,7 +16,7 @@ public class EstudianteController {
 
     @PostMapping
     public ResponseEntity<Estudiante> crearEstudiante(@RequestBody Estudiante estudiante) {
-        return ResponseEntity.ok(estudianteService.guardar(estudiante));
+        return ResponseEntity.ok(estudianteService.guardarEstudiante(estudiante));
     }
 
     @GetMapping("/{id}")
@@ -33,12 +33,12 @@ public class EstudianteController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Estudiante> actualizarEstudiante(@PathVariable Long id, @RequestBody Estudiante estudiante) {
-        return ResponseEntity.ok(estudianteService.actualizar(id, estudiante));
+        return ResponseEntity.ok(estudianteService.actualizarEstudiante(id, estudiante));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarEstudiante(@PathVariable Long id) {
-        estudianteService.eliminar(id);
+        estudianteService.eliminarEstudiante(id);
         return ResponseEntity.noContent().build();
     }
 }

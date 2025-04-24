@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProfesorService {
-    Profesor guardarProfesor(Profesor profesor);
-    Optional<Profesor> obtenerProfesorPorId(Long id);
-    List<Profesor> obtenerTodosLosProfesores();
-    Profesor actualizarProfesor(Long id, Profesor profesorActualizado);
-    void eliminarProfesor(Long id);
+    List<Profesor> getAllProfesores();
+    Profesor getProfesorById(Long id);
+    Profesor createProfesor(Profesor profesor);
+    Profesor updateProfesor(Long id, Profesor profesor);
+    void deleteProfesor(Long id);
+    Profesor findByCodigo(String codigo);
+    Profesor findByEmail(String email);
 }

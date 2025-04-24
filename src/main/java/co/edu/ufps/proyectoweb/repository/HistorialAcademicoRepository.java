@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Set;
 
 public interface HistorialAcademicoRepository extends JpaRepository<HistorialAcademico, Long> {
     List<HistorialAcademico> findByEstudianteId(Long estudianteId);

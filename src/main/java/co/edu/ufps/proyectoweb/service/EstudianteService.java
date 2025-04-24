@@ -2,7 +2,6 @@ package co.edu.ufps.proyectoweb.service;
 
 import co.edu.ufps.proyectoweb.entity.Estudiante;
 import co.edu.ufps.proyectoweb.repository.EstudianteRepository;
-import co.edu.ufps.proyectoweb.repository.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,41 +13,47 @@ import java.util.Optional;
 public class EstudianteService {
 
     @Autowired
-    EstudianteRepository estudianteRepository;
+    private EstudianteRepository estudianteRepository;
 
-    public EstudianteService(EstudianteRepository estudianteRepository) {
-        this.estudianteRepository = estudianteRepository;
+    public List<Estudiante> getAllEstudiantes() {
+        return estudianteRepository.findAll();
     }
-    public Estudiante guardar(Estudiante estudiante) {
+
+    public Estudiante getEstudianteById(Long id) {
+        return estudianteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado con id: " + id));
+    }
+
+    public Estudiante createEstudiante(Estudiante estudiante) {
+        return estudianteRepository.save(estudiante);
+    }
+
+    public Estudiante updateEstudiante(Long id, Estudiante estudianteDetails) {
+        Estudiante estudiante = getEstudianteById(id);
+        estudiante.setNombre(estudianteDetails.getNombre());
+        estudiante.setApellido(estudianteDetails.getApellido());
+        estudiante.setEmail(estudianteDetails.getEmail());
+        estudiante.setTelefono(estudianteDetails.getTelefono());
+        estudiante.setDireccion(estudianteDetails.getDireccion());
+        estudiante.setSemestre(estudianteDetails.getSemestre());
         return estudianteRepository.save(estudiante);
     }
 
 
-    @Transactional(readOnly = true)
-    public Optional<Estudiante> obtenerPorId(Long id) {
-        return estudianteRepository.findById(id);
+    public void deleteEstudiante(Long id) {
+        Estudiante estudiante = getEstudianteById(id);
+        estudianteRepository.delete(estudiante);
     }
 
 
-    public List<Estudiante> obtenerTodos() {
-        return estudianteRepository.findAll();
+    public Estudiante findByCodigo(String codigo) {
+        return estudianteRepository.findByCodigo(codigo)
+                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado con código: " + codigo));
     }
 
 
-    public Estudiante actualizar(Long id, Estudiante estudianteActualizado) {
-        return estudianteRepository.findById(id)
-                .map(e -> {
-                    e.setId(estudianteActualizado.getId());
-                    e.setNombre(estudianteActualizado.getNombre());
-                    e.setApellido(estudianteActualizado.getApellido());
-                    e.setEmail(estudianteActualizado.getEmail());
-                    return estudianteRepository.save(e);
-                })
-                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado con ID: " + id));
-    }
-
-
-    public void eliminar(Long id) {
-        estudianteRepository.deleteById(id);
+    public Estudiante findByEmail(String email) {
+        return estudianteRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado con email: " + email));
     }
 }

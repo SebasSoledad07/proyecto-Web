@@ -23,19 +23,15 @@ public class Usuario {
     private String username;
     @Column(unique = true)
     private String password;
-    @Column
-    private String nombre;
-    @Column
-    private String apellido;
-    @Column
-    private LocalDate fechaNacimiento;
-    private String direccion;
-    @Column(unique = true)
-    private String email;
+
     private Boolean activo;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<AsignacionRol> roles;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "roles" , joinColumns = @JoinColumn(name = "usuarioId", referencedColumnName = "id"))
+    private List<Rol> roles;
+
+
+
 
     //@OneToMany(mappedBy = "emisor")
    // private List<Usuario> mensajesEnviados;

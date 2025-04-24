@@ -50,7 +50,7 @@ public class AsistenciaServiceImpl implements AsistenciaService {
         asistenciaRepository.deleteById(id);
     }
     public boolean existeHistorial(Long estudianteId, Long cursoId) {
-        return asistenciaRepository.existeHistorial(estudianteId, cursoId);
+        return asistenciaRepository.existsByEstudianteIdAndCursoId(estudianteId, cursoId);
     }
 }
 
